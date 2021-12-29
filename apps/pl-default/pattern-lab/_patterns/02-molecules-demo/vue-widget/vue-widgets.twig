@@ -37,7 +37,7 @@
         </button>
 
         <div class="ml-2">
-          You typed: <strong>{% raw %}{{ name }}{% endraw %}</strong>
+          You typed: <strong>{{ name  | raw }}</strong>
         </div>
       </div>
     </form>
