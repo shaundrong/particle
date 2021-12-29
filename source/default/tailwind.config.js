@@ -6,7 +6,7 @@
 const path = require('path');
 
 // Tailwind Plugins
-const tailwindCustomForms = require('@tailwindcss/custom-forms');
+const tailwindCustomForms = require('@tailwindcss/forms');
 
 const colors = require('./tokens/colors.tailwind');
 const customForms = require('./tokens/custom-forms.tailwind');
