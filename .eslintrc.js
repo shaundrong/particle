@@ -11,7 +11,7 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:vue/recommended',
     'plugin:prettier/recommended',
-    'prettier/vue',
+    'prettier',
   ],
   plugins: ['prettier'],
   root: true,

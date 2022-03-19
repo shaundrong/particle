@@ -21,6 +21,11 @@ const appConfig = require('./particle.app.config');
 const { APP_NAME, APP_DIST, APP_DIST_PUBLIC } = appConfig;
 
 const shared = {
+  resolve: {
+    fallback: {
+      "path": require.resolve("path-browserify"),
+    }
+  },
   entry: {
     app: [path.resolve(__dirname, 'index.js')],
   },

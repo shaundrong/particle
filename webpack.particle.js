@@ -11,6 +11,7 @@ const { ProgressPlugin, ProvidePlugin } = require('webpack');
 // Plugins
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 // Constants: environment
 // NODE_ENV is set within all NPM scripts before running Webpack, eg:
@@ -47,38 +48,17 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'resolve-url-loader',
-            options: {
-              sourceMap: true,
-              root: '',
-            },
-          },
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'resolve-url-loader', options: { sourceMap: true, root: '' } },
           {
             // PostCSS config at ./postcss.config.js
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              ident: 'postcss',
             },
           },
         ],
-      },
-      {
-        test: /\.(js|vue)$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true, // development only
-          // emitWarning: false, // production only
-        },
       },
       {
         test: /\.js$/,
@@ -137,6 +117,9 @@ module.exports = {
     ...(NODE_ENV === 'production'
       ? []
       : [new ProgressPlugin({ profile: false })]),
+   new ESLintPlugin({
+     emitWarning: true,
+   })
   ],
   resolve: {
     alias: {

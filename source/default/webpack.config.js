@@ -17,13 +17,10 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              config: {
-                path: path.join('postcss.config.js'),
-                ctx: {
-                  // PostCSS Tailwind config
-                  tailwindConfig: path.resolve(__dirname, 'tailwind.config.js'),
-                },
-              },
+              postcssOptions: {
+                config: path.join('postcss.config.js'),
+                tailwindConfig: path.resolve(__dirname, 'tailwind.config.js'),
+               },
             },
           },
         ],

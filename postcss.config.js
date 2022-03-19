@@ -14,7 +14,7 @@ module.exports = ({ options, env }) => {
     plugins: [
       stylelint(),
       // tailwindConfig is set per *design system* webpack.config.js.
-      options.tailwindConfig && tailwindcss(options.tailwindConfig),
+      options.postcssOptions && options.postcssOptions.tailwindConfig && tailwindcss(options.postcssOptions.tailwindConfig),
       // Hex in rgba like Sass
       hexrgba(),
       // Use .browserslistrc to determine CSS mutations
